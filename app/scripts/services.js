@@ -22,14 +22,16 @@ angular.module('oic_demo.services', [])
 
     // Init
     $ionicPlatform.ready(function() {
-        _service.plugin = cordova.require('cordova/plugin/oic');
-        _service.plugin.onresourcefound = _onresourcefound;
-        _findResources();
+        if (window.cordova !== undefined) {
+            _service.plugin = window.cordova.require('cordova/plugin/oic');
+            _service.plugin.onresourcefound = _onresourcefound;
+            _findResources();
+        }
     });
 
     return {
         // Data
-        resources: _service.resourcess,
+        resources: _service.resources,
 
         // Functions
         setBackend: _setBackend,
