@@ -3,11 +3,11 @@
     <div class="empty-set" ng-if="oicService.data.resources.length == 0">
         No resources discovered.
     </div>
-    <div class="resources" ng-if="oicService.data.resources.length > 0">
-        <div class="resource" ng-repeat="resource in oicService.data.resources">
-            Device ID: {{resource.deviceId}} <br/>
-            Resource type: {{resource.resourceType}}
-        </div>
-    </div>
+    <ion-list class="resources" ng-if="oicService.data.resources.length > 0">
+        <ion-item class="resource" ng-repeat="resource in oicService.data.resources">
+            <strong>Device ID</strong>: {{resource.deviceId}} <br/>
+            <strong>Resource type</strong>: {{resource.resourceType}}
+        </ion-item>
+    </ion-list>
   </ion-content>
 </ion-view>
