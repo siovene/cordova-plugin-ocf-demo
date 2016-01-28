@@ -7,7 +7,7 @@ angular.module('oic_demo.services', [])
     };
 
     function _onresourcefound(event) {
-        resource.push(event.resource);
+        _service.resources.push(event.resource);
     }
 
     function _findResources(options) {
