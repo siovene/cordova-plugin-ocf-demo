@@ -29,8 +29,8 @@
     <platform name="android">
         //These preferences are actually available in Cordova by default although not currently documented
         <preference name="android-minSdkVersion" value="8" />
-        <preference name="android-maxSdkVersion" value="19" />
-        <preference name="android-targetSdkVersion" value="19" />
+        <preference name="android-maxSdkVersion" value="21" />
+        <preference name="android-targetSdkVersion" value="21" />
 
         //custom preferences examples
         <preference name="android-windowSoftInputMode" value="stateVisible" />
