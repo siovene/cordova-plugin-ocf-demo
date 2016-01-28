@@ -6,3 +6,20 @@
     margin: 1em 0;
     text-align: center;
 }
+
+.modal {
+    h1.title {
+        font-weight: bold;
+        text-align: center !important;
+    }
+
+    p.message {
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 2em;
+        line-height: 1em;
+        margin-top: 1em;
+        text-align: center;
+        color: #bbb;
+    }
+}

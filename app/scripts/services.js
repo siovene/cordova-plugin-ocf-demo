@@ -19,6 +19,7 @@ angular.module('oic_demo.services', [])
     }
 
     function _findResources(options) {
+        _data.resources = [];
         return plugin.findResources(options);
     }
 
