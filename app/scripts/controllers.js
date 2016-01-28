@@ -1,4 +1,5 @@
 angular.module('oic_demo.controllers', [])
 
-.controller('AppCtrl', function() {
+.controller('AppCtrl', function($scope, OICService) {
+    $scope.oic = OICService;
 });

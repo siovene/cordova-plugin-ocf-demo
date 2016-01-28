@@ -1,5 +1,7 @@
-<ion-view view-title="OIC Demo: resources">
+<ion-view view-title="Resources">
   <ion-content>
-    <h1>OIC Demo: resources</h1>
+    <div class="empty-set" ng-if="oic.resources.length == 0">
+        No resources discovered.
+    </div>
   </ion-content>
 </ion-view>
