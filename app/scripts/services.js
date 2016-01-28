@@ -2,36 +2,40 @@
 
 angular.module('oic_demo.services', [])
 
-.factory('OICService', function($ionicPlatform) {
-    var _service = {
-        plugin: null,
-        resources: []
-    };
+.factory('OICService', function($ionicPlatform, $rootScope) {
+    var plugin = null,
+       _data = {
+            resources: []
+        };
 
     function _onresourcefound(event) {
-        _service.resources.push(event.resource);
+        $rootScope.$apply(function() {
+            _data.resources.push(event.resource);
+        });
     }
 
     function _setBackend(backend) {
-        return _service.plugin._setBackend(backend);
+        return plugin.setBackend(backend);
     }
 
     function _findResources(options) {
-        return _service.plugin.findResources(options);
+        return plugin.findResources(options);
     }
 
     // Init
     $ionicPlatform.ready(function() {
         if (window.cordova !== undefined) {
-            _service.plugin = window.cordova.require('cordova/plugin/oic');
-            _service.plugin.onresourcefound = _onresourcefound;
-            _findResources();
+            plugin = window.cordova.require('cordova/plugin/oic');
+            plugin.onresourcefound = _onresourcefound;
+            _setBackend('mock').then(function() {
+                _findResources();
+            });
         }
     });
 
     return {
         // Data
-        resources: _service.resources,
+        data: _data,
 
         // Functions
         setBackend: _setBackend,

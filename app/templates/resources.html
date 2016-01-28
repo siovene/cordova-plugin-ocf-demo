@@ -1,7 +1,13 @@
 <ion-view view-title="Resources">
   <ion-content>
-    <div class="empty-set" ng-if="oic.resources.length == 0">
+    <div class="empty-set" ng-if="oicService.data.resources.length == 0">
         No resources discovered.
+    </div>
+    <div class="resources" ng-if="oicService.data.resources.length > 0">
+        <div class="resource" ng-repeat="resource in oicService.data.resources">
+            Device ID: {{resource.deviceId}} <br/>
+            Resource type: {{resource.resourceType}}
+        </div>
     </div>
   </ion-content>
 </ion-view>

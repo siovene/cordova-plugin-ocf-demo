@@ -10,8 +10,7 @@ describe("OICService", function() {
     }));
 
     it("data and functions are defined and initialized", function() {
-        console.log(oicService.resources);
-        expect(oicService.resources).to.be.an('array').that.is.empty;
+        expect(oicService.data.resources).to.be.an('array').that.is.empty;
         expect(oicService.setBackend).to.be.an('function');
         expect(oicService.findResources).to.be.an('function');
     });
