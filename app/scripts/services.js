@@ -30,7 +30,7 @@ angular.module('oic_demo.services', [])
             plugin.onresourcefound = _onresourcefound;
             _setBackend('mock').then(function() {
                 _findResources({
-                  deviceId: "127.0.0.1", resourcePath: "/", resourceType: "Test"
+                  deviceId: '127.0.0.1', resourcePath: '/', resourceType: 'Test'
                 });
             });
         }
