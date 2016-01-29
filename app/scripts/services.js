@@ -29,7 +29,9 @@ angular.module('oic_demo.services', [])
             plugin = window.cordova.require('cordova/plugin/oic');
             plugin.onresourcefound = _onresourcefound;
             _setBackend('mock').then(function() {
-                _findResources();
+                _findResources({
+                  deviceId: "127.0.0.1", resourcePath: "/", resourceType: "Test"
+                });
             });
         }
     });

@@ -19,7 +19,12 @@ angular.module('oic_demo.controllers', [])
     $scope.oicService = OICService;
     $scope.discover = function() {
         $scope.discoveringModal.show().then(function() {
-            $scope.oicService.findResources().then(function() {
+            var options = {
+                deviceId: "127.0.0.1",
+                resourcePath: "/",
+                resourceType: "Test"
+            };
+            $scope.oicService.findResources(options).then(function() {
                 $timeout(function() {
                     $scope.discoveringModal.hide();
                 }, 1000);

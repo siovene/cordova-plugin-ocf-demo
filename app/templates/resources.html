@@ -6,6 +6,7 @@
     <ion-list class="resources" ng-if="oicService.data.resources.length > 0">
         <ion-item class="resource" ng-repeat="resource in oicService.data.resources">
             <strong>Device ID</strong>: {{resource.deviceId}} <br/>
+            <strong>Resource path</strong>: {{resource.resourcePath}} <br/>
             <strong>Resource type</strong>: {{resource.resourceType}}
         </ion-item>
     </ion-list>
