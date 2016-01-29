@@ -7,8 +7,9 @@ angular.module('oic_demo.controllers', [])
     $ionicModal, $scope, $timeout,
 
     // Our services
-    OICService)
+    OICService, SettingsService)
 {
+    // Modals
     $ionicModal.fromTemplateUrl('templates/modals/discoveringModal.html', {
         scope: $scope,
         animation: 'slide-in-up'
@@ -16,13 +17,16 @@ angular.module('oic_demo.controllers', [])
         $scope.discoveringModal = modal;
     });
 
+    // Scope objects
     $scope.oicService = OICService;
+
+    // Scope functions
     $scope.discover = function() {
         $scope.discoveringModal.show().then(function() {
             var options = {
-                deviceId: '127.0.0.1',
-                resourcePath: '/',
-                resourceType: 'Test'
+                deviceId: SettingsService.settings.resourceDiscovery.deviceId,
+                resourcePath: SettingsService.settings.resourceDiscovery.resourcePath,
+                resourceType: SettingsService.settings.resourceDiscovery.resourceType
             };
             $scope.oicService.findResources(options).then(function() {
                 $timeout(function() {
@@ -36,4 +40,8 @@ angular.module('oic_demo.controllers', [])
     $scope.$on('$destroy', function() {
         $scope.discoveringModal.remove();
     });
+})
+
+.controller('SettingsController', function($scope, SettingsService) {
+    $scope.settingsService = SettingsService;
 });

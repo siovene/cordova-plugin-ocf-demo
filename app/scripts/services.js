@@ -2,7 +2,7 @@
 
 angular.module('oic_demo.services', [])
 
-.factory('OICService', function($ionicPlatform, $rootScope) {
+.factory('OICService', function($ionicPlatform, $rootScope, SettingsService) {
     var plugin = null,
        _data = {
             resources: []
@@ -29,9 +29,7 @@ angular.module('oic_demo.services', [])
             plugin = window.cordova.require('cordova/plugin/oic');
             plugin.onresourcefound = _onresourcefound;
             _setBackend('mock').then(function() {
-                _findResources({
-                  deviceId: '127.0.0.1', resourcePath: '/', resourceType: 'Test'
-                });
+                _findResources(SettingsService.settings.resourceDiscovery);
             });
         }
     });
@@ -43,5 +41,19 @@ angular.module('oic_demo.services', [])
         // Functions
         setBackend: _setBackend,
         findResources: _findResources
+    };
+})
+
+.factory('SettingsService', function() {
+    var _settings = {
+        resourceDiscovery: {
+            deviceId: '127.0.0.1',
+            resourcePath: '/',
+            resourceType: 'light'
+        }
+    };
+
+    return {
+        settings: _settings
     };
 });

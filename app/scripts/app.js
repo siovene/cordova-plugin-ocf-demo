@@ -41,6 +41,15 @@ angular.module('oic_demo', ['ionic', 'oic_demo.controllers', 'oic_demo.services'
                 templateUrl: 'templates/resources.html'
             }
         }
+    })
+    .state('app.settings', {
+        url: '/settings',
+        views: {
+            'menuContent': {
+                controller: 'SettingsController',
+                templateUrl: 'templates/settings.html'
+            }
+        }
     });
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/resources');

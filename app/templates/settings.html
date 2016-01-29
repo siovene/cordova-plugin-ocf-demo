@@ -1,0 +1,25 @@
+<ion-view view-title="Settings">
+  <ion-content>
+    <div class="list">
+        <div class="item item-divider">Resource discovery</div>
+        <label class="item item-input item-floating-label">
+            <span class="input-label">Device ID</span>
+            <input
+                type="text" placeholder="Device ID"
+                ng-model="settingsService.settings.resourceDiscovery.deviceId">
+        </label>
+        <label class="item item-input item-floating-label">
+            <span class="input-label">Resource path</span>
+            <input
+                type="text" placeholder="Resource path"
+                ng-model="settingsService.settings.resourceDiscovery.resourcePath">
+        </label>
+        <label class="item item-input item-floating-label">
+            <span class="input-label">Resource type</span>
+            <input
+                type="text" placeholder="Resource type"
+                ng-model="settingsService.settings.resourceDiscovery.resourceType">
+        </label>
+    </div>
+  </ion-content>
+</ion-view>
