@@ -28,7 +28,7 @@ angular.module('oic_demo.services', [])
         if (window.cordova !== undefined) {
             plugin = window.cordova.require('cordova/plugin/oic');
             plugin.onresourcefound = _onresourcefound;
-            _setBackend('mock').then(function() {
+            _setBackend('iotivity').then(function() {
                 _findResources(SettingsService.settings.resourceDiscovery);
             });
         }
@@ -47,9 +47,9 @@ angular.module('oic_demo.services', [])
 .factory('SettingsService', function() {
     var _settings = {
         resourceDiscovery: {
-            deviceId: '127.0.0.1',
-            resourcePath: '/',
-            resourceType: 'light'
+            deviceId: '',
+            resourcePath: '',
+            resourceType: 'oic.r.light'
         }
     };
 
