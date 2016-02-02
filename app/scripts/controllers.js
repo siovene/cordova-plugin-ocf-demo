@@ -1,10 +1,9 @@
-'use strict';
-
+'use strict'; 
 angular.module('oic_demo.controllers', [])
 
-.controller('AppCtrl', function(
+.controller('AppController', function(
     // Ionic services
-    $ionicModal, $scope, $timeout,
+    $ionicModal, $rootScope, $scope, $timeout,
 
     // Our services
     OICService, SettingsService)
@@ -17,9 +16,6 @@ angular.module('oic_demo.controllers', [])
         $scope.discoveringModal = modal;
     });
 
-    // Scope objects
-    $scope.oicService = OICService;
-
     // Scope functions
     $scope.discover = function() {
         $scope.discoveringModal.show().then(function() {
@@ -28,7 +24,7 @@ angular.module('oic_demo.controllers', [])
                 resourcePath: SettingsService.settings.resourceDiscovery.resourcePath,
                 resourceType: SettingsService.settings.resourceDiscovery.resourceType
             };
-            $scope.oicService.findResources(options).then(function() {
+            OICService.findResources(options).then(function() {
                 $timeout(function() {
                     $scope.discoveringModal.hide();
                 }, 1000);
@@ -40,6 +36,18 @@ angular.module('oic_demo.controllers', [])
     $scope.$on('$destroy', function() {
         $scope.discoveringModal.remove();
     });
+})
+
+.controller('ResourcesController', function($scope, OICService) {
+    $scope.resources = OICService.getResources();
+    $scope.$watch(function() { return OICService.getResources(); },
+        function(newValue) {
+            $scope.resources = newValue;
+        });
+})
+
+.controller('ResourceController', function($scope, resource) {
+    $scope.resource = resource;
 })
 
 .controller('SettingsController', function($scope, SettingsService) {

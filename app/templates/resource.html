@@ -1,0 +1,35 @@
+<ion-view view-title="Resource">
+    <ion-content>
+        <div class="list list-inset">
+
+            <div class="item item-divider">
+                Device id
+            </div>
+            <div class="item">
+                {{resource.id.deviceId}}
+            </div>
+
+            <div class="item item-divider">
+                Path
+            </div>
+            <div class="item">
+                {{resource.id.resourcePath}}
+            </div>
+
+            <div class="item item-divider" ng-if="resource.resourceTypes.length > 0">
+                Types
+            </div>
+            <div class="item" ng-repeat="type in resource.resourceTypes">
+                {{type}}
+            </div>
+
+            <div class="item item-divider" ng-if="resource.interfaces.length > 0">
+                Interface
+            </div>
+            <div class="item" ng-repeat="interface in resource.interfaces">
+                {{interface}}
+            </div>
+
+        </div>
+    </ion-content>
+</ion-view>

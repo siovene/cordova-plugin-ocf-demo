@@ -31,14 +31,29 @@ angular.module('oic_demo', ['ionic', 'oic_demo.controllers', 'oic_demo.services'
         url: '/app',
         abstract: true,
         templateUrl: 'templates/menu.html',
-        controller: 'AppCtrl'
+        controller: 'AppController'
     })
 
     .state('app.resources', {
         url: '/resources',
         views: {
             'menuContent': {
-                templateUrl: 'templates/resources.html'
+                templateUrl: 'templates/resources.html',
+                controller: 'ResourcesController',
+            }
+        }
+    })
+    .state('app.resource', {
+        url: '/resource/{resourceId}',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/resource.html',
+                controller: 'ResourceController',
+                resolve: {
+                    resource: function($stateParams, OICService) {
+                        return OICService.getResource(parseInt($stateParams.resourceId));
+                    }
+                }
             }
         }
     })
@@ -46,8 +61,8 @@ angular.module('oic_demo', ['ionic', 'oic_demo.controllers', 'oic_demo.services'
         url: '/settings',
         views: {
             'menuContent': {
-                controller: 'SettingsController',
-                templateUrl: 'templates/settings.html'
+                templateUrl: 'templates/settings.html',
+                controller: 'SettingsController'
             }
         }
     });
