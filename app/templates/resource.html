@@ -30,6 +30,13 @@
                 {{interface}}
             </div>
 
+            <div class="item item-divider" ng-if="resource.mediaTypes.length > 0">
+                Media types
+            </div>
+            <div class="item" ng-repeat="mediaType in resource.mediaTypes">
+                {{mediaType}}
+            </div>
+
         </div>
     </ion-content>
 </ion-view>
