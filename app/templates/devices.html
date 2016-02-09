@@ -8,8 +8,12 @@
             class="device"
             ng-repeat="device in devices">
 
-            <strong>Name</strong>: {{device.name || "(no name)"}} <br/>
-            <strong>UUID</strong>: {{device.uuid || "(no UUID)"}} <br/>
+            <strong>UUID</strong>: {{device.uuid || "n/a"}} <br/>
+            <strong>URL</strong>: {{device.url || "n/a"}} <br/>
+            <strong>Name</strong>: {{device.name || "n/a"}} <br/>
+            <strong>Data models</strong>: {{device.dataModels || "n/a"}} <br/>
+            <strong>Core spec version</strong>: {{device.coreSpecVersion || "n/a"}} <br/>
+            <strong>Role</strong>: {{device.role || "n/a"}} <br/>
         </ion-item>
     </ion-list>
   </ion-content>
