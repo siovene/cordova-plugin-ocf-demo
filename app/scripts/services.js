@@ -5,8 +5,15 @@ angular.module('oic_demo.services', [])
 .factory('OICService', function($ionicPlatform, $rootScope, SettingsService) {
     var _plugin = null,
         _data = {
+            devices: [],
             resources: []
         };
+
+    function _ondevicefound(event) {
+        $rootScope.$apply(function() {
+            _data.devices.push(event.device);
+        });
+    }
 
     function _onresourcefound(event) {
         $rootScope.$apply(function() {
@@ -16,6 +23,15 @@ angular.module('oic_demo.services', [])
 
     function _setBackend(backend) {
         return _plugin.setBackend(backend);
+    }
+
+    function _findDevices() {
+        _data.devices = [];
+        return _plugin.findDevices();
+    }
+
+    function _getDevices() {
+        return _data.devices;
     }
 
     function _findResources(options) {
@@ -39,8 +55,10 @@ angular.module('oic_demo.services', [])
     $ionicPlatform.ready(function() {
         if (window.cordova !== undefined) {
             _plugin = window.cordova.require('cordova/plugin/oic');
+            _plugin.ondevicefound = _ondevicefound;
             _plugin.onresourcefound = _onresourcefound;
             _setBackend('iotivity').then(function() {
+                _findDevices();
                 _findResources(SettingsService.settings.resourceDiscovery);
             });
         }
@@ -52,6 +70,8 @@ angular.module('oic_demo.services', [])
 
         // Functions
         setBackend: _setBackend,
+        findDevices: _findDevices,
+        getDevices: _getDevices,
         findResources: _findResources,
         getResources: _getResources,
         getResource: _getResource

@@ -19,15 +19,17 @@ angular.module('oic_demo.controllers', [])
     // Scope functions
     $scope.discover = function() {
         $scope.discoveringModal.show().then(function() {
-            var options = {
-                deviceId: SettingsService.settings.resourceDiscovery.deviceId,
-                resourcePath: SettingsService.settings.resourceDiscovery.resourcePath,
-                resourceType: SettingsService.settings.resourceDiscovery.resourceType
-            };
-            OICService.findResources(options).then(function() {
-                $timeout(function() {
-                    $scope.discoveringModal.hide();
-                }, 1000);
+            OICService.findDevices().then(function() {
+                var options = {
+                    deviceId: SettingsService.settings.resourceDiscovery.deviceId,
+                    resourcePath: SettingsService.settings.resourceDiscovery.resourcePath,
+                    resourceType: SettingsService.settings.resourceDiscovery.resourceType
+                };
+                OICService.findResources(options).then(function() {
+                    $timeout(function() {
+                        $scope.discoveringModal.hide();
+                    }, 1000);
+                });
             });
         });
     };
@@ -36,6 +38,14 @@ angular.module('oic_demo.controllers', [])
     $scope.$on('$destroy', function() {
         $scope.discoveringModal.remove();
     });
+})
+
+.controller('DevicesController', function($scope, OICService) {
+    $scope.devices = OICService.getDevices();
+    $scope.$watch(function() { return OICService.getDevices(); },
+        function(newValue) {
+            $scope.devices = newValue;
+        });
 })
 
 .controller('ResourcesController', function($scope, OICService) {

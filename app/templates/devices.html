@@ -1,0 +1,16 @@
+<ion-view view-title="Devices">
+  <ion-content>
+    <div class="empty-set" ng-if="devices.length == 0">
+        No devices discovered.
+    </div>
+    <ion-list class="devices" ng-if="devices.length > 0">
+        <ion-item
+            class="device"
+            ng-repeat="device in devices">
+
+            <strong>Name</strong>: {{device.name || "(no name)"}} <br/>
+            <strong>UUID</strong>: {{device.uuid || "(no UUID)"}} <br/>
+        </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

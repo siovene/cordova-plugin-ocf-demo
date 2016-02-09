@@ -33,7 +33,15 @@ angular.module('oic_demo', ['ionic', 'oic_demo.controllers', 'oic_demo.services'
         templateUrl: 'templates/menu.html',
         controller: 'AppController'
     })
-
+    .state('app.devices', {
+        url: '/devices',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/devices.html',
+                controller: 'DevicesController',
+            }
+        }
+    })
     .state('app.resources', {
         url: '/resources',
         views: {
