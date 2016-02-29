@@ -37,6 +37,12 @@
                 {{mediaType}}
             </div>
 
+            <div class="item item-divider">
+                Properties
+            </div>
+            <div class="item" ng-repeat="(key, value) in resource.properties">
+                {{key}}: <strong>{{value}}</strong>
+            </div>
         </div>
     </ion-content>
 </ion-view>
