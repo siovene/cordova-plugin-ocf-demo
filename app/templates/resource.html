@@ -40,8 +40,11 @@
             <div class="item item-divider">
                 Properties
             </div>
-            <div class="item" ng-repeat="(key, value) in resource.properties">
+            <div class="item item-button-right" ng-repeat="(key, value) in resource.properties">
                 {{key}}: <strong>{{value}}</strong>
+                <button class="button button-positive" ng-click="editResourceProperty(key)">
+                    <i class="icon ion-edit"></i>
+                </button>
             </div>
         </div>
     </ion-content>

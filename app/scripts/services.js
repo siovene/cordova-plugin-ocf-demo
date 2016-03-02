@@ -51,6 +51,10 @@ angular.module('oic_demo.services', [])
         return _data.resources[index];
     }
 
+    function _updateResource(resource) {
+        return _plugin.update(resource);
+    }
+
     // Init
     $ionicPlatform.ready(function() {
         if (window.cordova !== undefined) {
@@ -74,7 +78,8 @@ angular.module('oic_demo.services', [])
         getDevices: _getDevices,
         findResources: _findResources,
         getResources: _getResources,
-        getResource: _getResource
+        getResource: _getResource,
+        updateResource: _updateResource
     };
 })
 

@@ -57,5 +57,30 @@
         </ion-content>
       </ion-modal-view>
     </script>
+
+    <script id="templates/modals/editResourcePropertyModal.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar>
+          <h1 class="title">Edit resource property</h1>
+        </ion-header-bar>
+        <ion-content>
+            <div class="list list-inset">
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Key</span>
+                    <input type="text" placeholder="{{resourcePropertyBeingEdited}}" ng-disabled="true"/>
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Value</span>
+                    <input type="text" placeholder="Value" ng-model="resource.properties[resourcePropertyBeingEdited]"/>
+                    <span class="help-text">(Please use a JSON parseable value)</span>
+                </label>
+                <button class="item button button-block button-positive" ng-click="save()" ng-disabled="saving">
+                    <span ng-if="saving"><i class="icon ion-load-c"></i></span>
+                    <span ng-if="!saving">Save</span>
+                </button>
+            </div>
+        </ion-content>
+      </ion-modal-view>
+    </script>
   </body>
 </html>
