@@ -5,7 +5,7 @@
   "dependencies": {},
   "devDependencies": {
     "chai": "^3.4.1",
-    "cordova": "~4.2.0",
+    "cordova": "^6.0.0",
     "elementtree": "0.1.6",
     "glob": "~4.3.5",
     "grunt": "~0.4.5",
