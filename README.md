@@ -13,7 +13,7 @@ You will need the Android SDK, version 21 or above. You will also need an ARM An
 # How to build
 
 ```sh
-sudo npm install -g cordova grunt-cli # global npm packages
+sudo npm install -g cordova grunt-cli bower # global npm packages
 npm install # local npm packages
 bower install # client js repositories
 grunt platform:add:android # inits the platform and install plugins
