@@ -8,7 +8,9 @@ Currently, the **OIC Cordova Plugin for Android** ships with a pre-built Iotivit
 
 # Dependencies
 
-You will need the Android SDK, version 21 or above. You will also need an ARM Android device (multicasting doesn't work on the Android emulator.)
+ - nodejs v5 or above (https://nodejs.org/en/download/package-manager/)
+ - the Android SDK, version 21 or above
+ - an ARM Android device (multicasting doesn't work on the Android emulator)
 
 # How to build
 
