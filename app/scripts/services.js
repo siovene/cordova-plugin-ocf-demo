@@ -13,7 +13,7 @@ angular.module('oic_demo.services', [])
 
         reset: function() {
             _data.devices = [];
-            _data.resource = [];
+            _data.resources = [];
         },
 
         devices: function() { return _data.devices; },
@@ -129,8 +129,7 @@ angular.module('oic_demo.services', [])
     var _settings = {
         resourceDiscovery: {
             deviceId: '',
-            resourcePath: '',
-            resourceType: 'oic.r.light'
+            resourceType: ''
         }
     };
 

@@ -10,17 +10,11 @@
                 ng-change="dataService.reset()">
         </label>
         <label class="item item-input item-floating-label">
-            <span class="input-label">Resource path</span>
-            <input
-                type="text" placeholder="Resource path"
-                ng-model="settingsService.settings.resourceDiscovery.resourcePath"
-                ng-change="dataService.reset()">
-        </label>
-        <label class="item item-input item-floating-label">
             <span class="input-label">Resource type</span>
             <input
                 type="text" placeholder="Resource type"
-                ng-model="settingsService.settings.resourceDiscovery.resourceType">
+                ng-model="settingsService.settings.resourceDiscovery.resourceType"
+                ng-change="dataService.reset()">
         </label>
     </div>
   </ion-content>
