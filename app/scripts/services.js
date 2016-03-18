@@ -2,23 +2,66 @@
 
 angular.module('oic_demo.services', [])
 
-.factory('OICService', function($ionicPlatform, $rootScope, SettingsService) {
-    var _plugin = null,
-        _data = {
-            devices: [],
-            resources: []
-        };
+.factory('DataService', function() {
+    var _data = {
+        devices: [],
+        resources: []
+    };
+
+    return {
+        data: _data,
+
+        reset: function() {
+            _data.devices = [];
+            _data.resource = [];
+        },
+
+        devices: function() { return _data.devices; },
+        resources: function() { return _data.resources; },
+
+        addDevice: function(dev) {
+            var found = false;
+
+            angular.forEach(_data.devices, function(knownDevice) {
+                if (knownDevice.uuid === dev.uuid) {
+                    found = true;
+                }
+            });
+
+            if (!found) {
+                _data.devices.push(dev);
+            }
+        },
+        addResource: function(res) {
+            var found = false;
+
+            angular.forEach(_data.resources, function(knownResource) {
+                if (knownResource.id.deviceId === res.id.deviceId &&
+                    knownResource.id.resourcePath === res.id.resourcePath)
+                {
+                    found = true;
+                }
+            });
+
+            if (!found) {
+                _data.resources.push(res);
+            }
+        }
+    };
+})
+
+.factory('OICService', function(
+    $interval, $ionicPlatform,
+    DataService, SettingsService)
+{
+    var _plugin = null;
 
     function _ondevicefound(event) {
-        $rootScope.$apply(function() {
-            _data.devices.push(event.device);
-        });
+        DataService.addDevice(event.device);
     }
 
     function _onresourcefound(event) {
-        $rootScope.$apply(function() {
-            _data.resources.push(event.resource);
-        });
+        DataService.addResource(event.resource);
     }
 
     function _setBackend(backend) {
@@ -26,29 +69,29 @@ angular.module('oic_demo.services', [])
     }
 
     function _findDevices() {
-        _data.devices = [];
         return _plugin.findDevices();
     }
 
     function _getDevices() {
-        return _data.devices;
+        return DataService.devices();
     }
 
     function _findResources(options) {
-        _data.resources = [];
         return _plugin.findResources(options);
     }
 
     function _getResources() {
-        return _data.resources;
+        return DataService.resources();
     }
 
     function _getResource(index) {
-        if (index < 0 || index > _data.resources.length) {
+        var resources = DataService.resources();
+
+        if (index < 0 || index > resources.length) {
             return null;
         }
 
-        return _data.resources[index];
+        return resources[index];
     }
 
     function _updateResource(resource) {
@@ -62,16 +105,15 @@ angular.module('oic_demo.services', [])
             _plugin.ondevicefound = _ondevicefound;
             _plugin.onresourcefound = _onresourcefound;
             _setBackend('iotivity').then(function() {
-                _findDevices();
-                _findResources(SettingsService.settings.resourceDiscovery);
+                $interval(function() {
+                    _findDevices();
+                    _findResources(SettingsService.settings.resourceDiscovery);
+                }, 2000);
             });
         }
     });
 
     return {
-        // Data
-        data: _data,
-
         // Functions
         setBackend: _setBackend,
         findDevices: _findDevices,

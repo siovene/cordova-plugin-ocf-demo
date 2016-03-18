@@ -6,13 +6,15 @@
             <span class="input-label">Device ID</span>
             <input
                 type="text" placeholder="Device ID"
-                ng-model="settingsService.settings.resourceDiscovery.deviceId">
+                ng-model="settingsService.settings.resourceDiscovery.deviceId"
+                ng-change="dataService.reset()">
         </label>
         <label class="item item-input item-floating-label">
             <span class="input-label">Resource path</span>
             <input
                 type="text" placeholder="Resource path"
-                ng-model="settingsService.settings.resourceDiscovery.resourcePath">
+                ng-model="settingsService.settings.resourceDiscovery.resourcePath"
+                ng-change="dataService.reset()">
         </label>
         <label class="item item-input item-floating-label">
             <span class="input-label">Resource type</span>
