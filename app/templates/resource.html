@@ -38,6 +38,14 @@
             </div>
 
             <div class="item item-divider">
+                Observable
+            </div>
+            <div class="item">
+                <span ng-if="resource.observable">Yes</span>
+                <span ng-if="!resource.observable">No</span>
+            </div>
+
+            <div class="item item-divider">
                 Properties
             </div>
             <div class="item item-button-right" ng-repeat="(key, value) in resource.properties">
