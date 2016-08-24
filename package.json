@@ -55,7 +55,7 @@
   "cordovaPlugins": [
     "org.apache.cordova.device",
     "org.apache.cordova.console",
-    "com.ionic.keyboard",
-    "https://github.com/siovene/cordova-plugin-oic.git"
+    "ionic-plugin-keyboard",
+    "cordova-plugin-oic"
   ]
 }
