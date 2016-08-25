@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('oic_demo.services', [])
+angular.module('ocf_demo.services', [])
 
 .factory('DataService', function() {
     var _data = {
@@ -50,7 +50,7 @@ angular.module('oic_demo.services', [])
     };
 })
 
-.factory('OICService', function(
+.factory('OCFService', function(
     $interval, $ionicPlatform,
     DataService, SettingsService)
 {
@@ -101,7 +101,7 @@ angular.module('oic_demo.services', [])
     // Init
     $ionicPlatform.ready(function() {
         if (window.cordova !== undefined) {
-            _plugin = window.cordova.require('cordova/plugin/oic');
+            _plugin = window.cordova.require('cordova/plugin/ocf');
             _plugin.ondevicefound = _ondevicefound;
             _plugin.onresourcefound = _onresourcefound;
             _setBackend('iotivity').then(function() {

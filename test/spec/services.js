@@ -1,17 +1,17 @@
 'use strict';
 
-describe("OICService", function() {
-    var oicService;
+describe("OCFService", function() {
+    var ocfService;
 
-    beforeEach(module("oic_demo"));
+    beforeEach(module("ocf_demo"));
 
-    beforeEach(inject(function(_OICService_) {
-        oicService = _OICService_;
+    beforeEach(inject(function(_OCFService_) {
+        ocfService = _OCFService_;
     }));
 
     it("data and functions are defined and initialized", function() {
-        expect(oicService.data.resources).to.be.an('array').that.is.empty;
-        expect(oicService.setBackend).to.be.an('function');
-        expect(oicService.findResources).to.be.an('function');
+        expect(ocfService.data.resources).to.be.an('array').that.is.empty;
+        expect(ocfService.setBackend).to.be.an('function');
+        expect(ocfService.findResources).to.be.an('function');
     });
 });

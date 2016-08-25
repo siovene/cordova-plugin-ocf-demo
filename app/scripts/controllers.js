@@ -1,26 +1,26 @@
 'use strict'; 
-angular.module('oic_demo.controllers', [])
+angular.module('ocf_demo.controllers', [])
 
 .controller('AppController', function() {})
 
-.controller('DevicesController', function($scope, OICService) {
-    $scope.devices = OICService.getDevices();
-    $scope.$watch(function() { return OICService.getDevices(); },
+.controller('DevicesController', function($scope, OCFService) {
+    $scope.devices = OCFService.getDevices();
+    $scope.$watch(function() { return OCFService.getDevices(); },
         function(newValue) {
             $scope.devices = newValue;
         });
 })
 
-.controller('ResourcesController', function($scope, OICService) {
-    $scope.resources = OICService.getResources();
-    $scope.$watch(function() { return OICService.getResources(); },
+.controller('ResourcesController', function($scope, OCFService) {
+    $scope.resources = OCFService.getResources();
+    $scope.$watch(function() { return OCFService.getResources(); },
         function(newValue) {
             $scope.resources = newValue;
         });
 })
 
 .controller('ResourceController', function(
-    $ionicModal, $scope, OICService, resource)
+    $ionicModal, $scope, OCFService, resource)
 {
     $scope.resource = resource;
     $scope.saving = false;
@@ -46,7 +46,7 @@ angular.module('oic_demo.controllers', [])
             $scope.saving = false;
         }
 
-        OICService.updateResource($scope.resource).then(
+        OCFService.updateResource($scope.resource).then(
             function success() { done(); },
             function error(reason) { done(); alert(reason); }
         );

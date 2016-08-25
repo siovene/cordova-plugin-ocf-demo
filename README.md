@@ -1,10 +1,10 @@
-# cordova-plugin-oic-demo
+# cordova-plugin-ocf-demo
 
-This demo app requires the cordova-plugin-oic packages, available at https://github.com/siovene/cordova-plugin-oic/.
+This demo app requires the cordova-plugin-ocf packages, available at https://github.com/siovene/cordova-plugin-ocf/.
 
-It show-cases the **OIC Cordova Plugin for Android**, but discoverying and listing properties of available resources on the current network.
+It show-cases the **OCF Cordova Plugin for Android**, but discoverying and listing properties of available resources on the current network.
 
-Currently, the **OIC Cordova Plugin for Android** ships with a pre-built Iotivity 1.0.1 for ARM with a custom patch on top.
+Currently, the **OCF Cordova Plugin for Android** ships with a pre-built Iotivity 1.0.1 for ARM with a custom patch on top.
 
 # Dependencies
 

@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.example.CordovaPluginOicDemo" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>CordovaPluginOicDemo</name>
+<widget id="com.example.CordovaPluginOcfDemo" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>CordovaPluginOcfDemo</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>
