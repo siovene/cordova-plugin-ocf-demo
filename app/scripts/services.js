@@ -54,7 +54,8 @@ angular.module('ocf_demo.services', [])
     $interval, $ionicPlatform,
     DataService, SettingsService)
 {
-    var _plugin = null;
+    var _plugin = null,
+        _discoveryInterval = null;
 
     function _ondevicefound(event) {
         DataService.addDevice(event.device);
@@ -98,6 +99,18 @@ angular.module('ocf_demo.services', [])
         return _plugin.update(resource);
     }
 
+    function _setContinuousDiscovery(val) {
+        if (val && _discoveryInterval === null) {
+            _discoveryInterval = $interval(function() {
+                _findDevices();
+                _findResources(SettingsService.settings.resourceDiscovery);
+            }, 2000);
+        } else if (!val && _discoveryInterval !== null) {
+            $interval.cancel(_discoveryInterval);
+            _discoveryInterval = null;
+        }
+    }
+
     // Init
     $ionicPlatform.ready(function() {
         if (window.cordova !== undefined) {
@@ -105,10 +118,12 @@ angular.module('ocf_demo.services', [])
             _plugin.ondevicefound = _ondevicefound;
             _plugin.onresourcefound = _onresourcefound;
             _setBackend('iotivity').then(function() {
-                $interval(function() {
-                    _findDevices();
-                    _findResources(SettingsService.settings.resourceDiscovery);
-                }, 2000);
+                if (SettingsService.settings.resourceDiscovery.continuous) {
+                    _discoveryInterval = $interval(function() {
+                        _findDevices();
+                        _findResources(SettingsService.settings.resourceDiscovery);
+                    }, 2000);
+                }
             });
         }
     });
@@ -121,17 +136,23 @@ angular.module('ocf_demo.services', [])
         findResources: _findResources,
         getResources: _getResources,
         getResource: _getResource,
-        updateResource: _updateResource
+        updateResource: _updateResource,
+        setContinuousDiscovery: _setContinuousDiscovery
     };
 })
 
-.factory('SettingsService', function() {
+.factory('SettingsService', function(localStorageService) {
     var _settings = {
         resourceDiscovery: {
             deviceId: '',
-            resourceType: ''
+            resourceType: '',
+            continuous: localStorageService.get('continuous-discovery')
         }
     };
+
+    if (_settings.resourceDiscovery.continuous === null) {
+        _settings.resourceDiscovery.continuous = false;
+    }
 
     return {
         settings: _settings

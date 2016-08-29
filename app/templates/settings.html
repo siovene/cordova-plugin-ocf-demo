@@ -2,6 +2,7 @@
   <ion-content>
     <div class="list">
         <div class="item item-divider">Resource discovery</div>
+
         <label class="item item-input item-floating-label">
             <span class="input-label">Device ID</span>
             <input
@@ -9,6 +10,7 @@
                 ng-model="settingsService.settings.resourceDiscovery.deviceId"
                 ng-change="dataService.reset()">
         </label>
+
         <label class="item item-input item-floating-label">
             <span class="input-label">Resource type</span>
             <input
@@ -16,6 +18,12 @@
                 ng-model="settingsService.settings.resourceDiscovery.resourceType"
                 ng-change="dataService.reset()">
         </label>
+
+        <ion-toggle
+            ng-model="settingsService.settings.resourceDiscovery.continuous"
+            ng-change="updateContinuousDiscoverySetting()">
+            Continuous discovery
+        </ion-toggle>
     </div>
   </ion-content>
 </ion-view>

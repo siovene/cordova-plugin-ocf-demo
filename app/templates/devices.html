@@ -1,8 +1,14 @@
 <ion-view view-title="Devices">
   <ion-content>
-    <div class="empty-set" ng-if="devices.length == 0">
+
+    <div class="empty-set" ng-if="devices.length == 0 && settings.resourceDiscovery.continuous">
         Discovering devices...
     </div>
+
+    <div class="empty-set" ng-if="devices.length == 0 && !settings.resourceDiscovery.continuous">
+        Please enable discovery in the settings.
+    </div>
+
     <ion-list class="devices" ng-if="devices.length > 0">
         <ion-item
             class="device"

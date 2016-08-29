@@ -1,8 +1,14 @@
 <ion-view view-title="Resources">
   <ion-content>
-    <div class="empty-set" ng-if="resources.length == 0">
+
+    <div class="empty-set" ng-if="resources.length == 0 && settings.resourceDiscovery.continuous">
         Discovering resources...
     </div>
+
+    <div class="empty-set" ng-if="resources.length == 0 && !settings.resourceDiscovery.continuous">
+        Please enable discovery in the settings.
+    </div>
+
     <ion-list class="resources" ng-if="resources.length > 0">
         <ion-item
             class="resource"

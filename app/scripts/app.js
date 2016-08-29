@@ -6,7 +6,7 @@
 // 'ocf_demo' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'ocf_demo.controllers' is found in controllers.js
-angular.module('ocf_demo', ['ionic', 'ocf_demo.controllers', 'ocf_demo.services'])
+angular.module('ocf_demo', ['ionic', 'ocf_demo.controllers', 'ocf_demo.services', 'LocalStorageModule'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {
@@ -24,7 +24,7 @@ angular.module('ocf_demo', ['ionic', 'ocf_demo.controllers', 'ocf_demo.services'
     });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, localStorageServiceProvider) {
     $stateProvider
 
     .state('app', {
@@ -76,4 +76,6 @@ angular.module('ocf_demo', ['ionic', 'ocf_demo.controllers', 'ocf_demo.services'
     });
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/resources');
+
+    localStorageServiceProvider.setPrefix('cordova-plugin-ocf-demo');
 });
