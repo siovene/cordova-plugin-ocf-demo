@@ -62,7 +62,10 @@ angular.module('ocf_demo.services', [])
     }
 
     function _onresourcefound(event) {
-        DataService.addResource(event.resource);
+        var path = event.resource.id.resourcePath;
+        if (path !== '/oic/d' && path !== '/oic/p') {
+            DataService.addResource(event.resource);
+        }
     }
 
     function _setBackend(backend) {
