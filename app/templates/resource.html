@@ -50,7 +50,10 @@
             </div>
             <div class="item item-button-right" ng-repeat="(key, value) in resource.properties">
                 {{key}}: <strong>{{value}}</strong>
-                <button class="button button-positive" ng-click="editResourceProperty(key)">
+                <button
+                    class="button button-positive"
+                    ng-if="isEditable(resource.id.resourcePath, key)"
+                    ng-click="editResourceProperty(key)">
                     <i class="icon ion-edit"></i>
                 </button>
             </div>

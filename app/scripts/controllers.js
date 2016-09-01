@@ -37,6 +37,23 @@ angular.module('ocf_demo.controllers', [])
     });
 
     // Scope functions
+    $scope.isEditable = function(resourcePath, key) {
+        var editableKeys = {
+            '/a/solar': ['simulationMode', 'tiltPercentage'],
+            '/a/fan': ['value'],
+            '/a/rgbled': ['rgbValue'],
+            '/a/led': ['value']
+        };
+
+        if (Object.keys(editableKeys).indexOf(resourcePath) !== -1) {
+            if (editableKeys[resourcePath].indexOf(key) !== -1) {
+                return true;
+            }
+        }
+
+        return false;
+    };
+
     $scope.editResourceProperty = function(key) {
         $scope.resourcePropertyBeingEdited = key;
         $scope.editResourcePropertyModal.show();
