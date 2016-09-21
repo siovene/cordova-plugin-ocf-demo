@@ -4,13 +4,13 @@ This demo app requires the cordova-plugin-ocf packages, available at https://git
 
 It show-cases the **OCF Cordova Plugin for Android**, but discoverying and listing properties of available resources on the current network.
 
-Currently, the **OCF Cordova Plugin for Android** ships with a pre-built Iotivity 1.0.1 for ARM with a custom patch on top.
+Currently, the **OCF Cordova Plugin for Android** ships with a pre-built Iotivity 1.0.1 with a custom patch on top.
 
 # Dependencies
 
  - nodejs v5 or above (https://nodejs.org/en/download/package-manager/)
  - the Android SDK, version 21 or above
- - an ARM Android device (multicasting doesn't work on the Android emulator)
+ - an ARM or x86 Android device (multicasting doesn't work on the Android emulator)
 
 # How to build
 
