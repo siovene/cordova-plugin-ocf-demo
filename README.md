@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/siovene/cordova-plugin-ocf-demo.svg?branch=master)](https://travis-ci.org/siovene/cordova-plugin-ocf-demo)
+
 # cordova-plugin-ocf-demo
 
 This demo app requires the cordova-plugin-ocf packages, available at https://github.com/siovene/cordova-plugin-ocf/.
@@ -8,7 +10,7 @@ Currently, the **OCF Cordova Plugin for Android** ships with a pre-built Iotivit
 
 # Dependencies
 
- - nodejs v5 or above (https://nodejs.org/en/download/package-manager/)
+ - nodejs v5 or above, v6.9.4 preferred (https://nodejs.org/en/download/package-manager/)
  - the Android SDK, version 21 or above
  - an ARM or x86 Android device (multicasting doesn't work on the Android emulator)
 

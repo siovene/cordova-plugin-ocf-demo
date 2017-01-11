@@ -498,8 +498,7 @@ module.exports = function (grunt) {
     'clean',
     'concurrent:test',
     'autoprefixer',
-    'karma:unit:start',
-    'watch:karma'
+    'karma:unit:start'
   ]);
 
   grunt.registerTask('serve', function (target) {
