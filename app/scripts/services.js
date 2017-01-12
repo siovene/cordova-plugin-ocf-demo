@@ -62,8 +62,15 @@ angular.module('ocf_demo.services', [])
     }
 
     function _onresourcefound(event) {
-        var path = event.resource.id.resourcePath;
-        if (path !== '/oic/d' && path !== '/oic/p') {
+        var path = event.resource.id.resourcePath,
+            ignoreList = [
+                '/oic/d',
+                '/oic/p',
+                '/oic/sec/doxm',
+                '/oic/sec/pstat'
+            ];
+
+        if (ignoreList.indexOf(path) === -1) {
             DataService.addResource(event.resource);
         }
     }
