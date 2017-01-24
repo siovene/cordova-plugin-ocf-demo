@@ -6,7 +6,12 @@
 // 'ocf_demo' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'ocf_demo.controllers' is found in controllers.js
-angular.module('ocf_demo', ['ionic', 'ocf_demo.controllers', 'ocf_demo.services', 'LocalStorageModule'])
+angular.module('ocf_demo', [
+    'ionic',
+    'ocf_demo.directives',
+    'ocf_demo.controllers',
+    'ocf_demo.services',
+    'LocalStorageModule'])
 
 .run(function($ionicPlatform) {
     $ionicPlatform.ready(function() {

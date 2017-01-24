@@ -37,6 +37,7 @@
     <!-- your app's js -->
     <!-- build:js scripts/scripts.js -->
     <script src="scripts/app.js"></script>
+    <script src="scripts/directives.js"></script>
     <script src="scripts/controllers.js"></script>
     <script src="scripts/configuration.js"></script>
     <script src="scripts/services.js"></script>
@@ -59,7 +60,7 @@
                 </label>
                 <label class="item item-input item-stacked-label">
                     <span class="input-label">Value</span>
-                    <input type="text" placeholder="Value" ng-model="resource.properties[resourcePropertyBeingEdited]"/>
+                    <input json-text type="text" placeholder="Value" ng-model="resource.properties[resourcePropertyBeingEdited]"/>
                     <span class="help-text">(Please use a JSON parseable value)</span>
                 </label>
                 <button class="item button button-block button-positive" ng-click="save()" ng-disabled="saving">
