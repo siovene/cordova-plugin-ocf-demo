@@ -69,7 +69,7 @@ angular.module('ocf_demo.controllers', [])
 
         OCFService.updateResource($scope.resource).then(
             function success() { done(); },
-            function error(reason) { done(); alert(reason); }
+            function error(reason) { done(); window.alert(reason); }
         );
     };
 
