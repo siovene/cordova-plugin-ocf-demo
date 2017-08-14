@@ -17,6 +17,7 @@ Currently, the **OCF Cordova Plugin for Android** ships with a pre-built Iotivit
 # How to build
 
 ```sh
+sudo apt-get install ruby-compass # Or install Compass somehow else
 sudo npm install -g cordova grunt-cli bower # global npm packages
 npm install # local npm packages
 bower install # client js repositories
