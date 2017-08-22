@@ -63,14 +63,9 @@ angular.module('ocf_demo.services', [])
 
     function _onresourcefound(event) {
         var path = event.resource.id.resourcePath,
-            ignoreList = [
-                '/oic/d',
-                '/oic/p',
-                '/oic/sec/doxm',
-                '/oic/sec/pstat'
-            ];
+            ignoreRe = new RegExp('/^\/oic\/(d|p)$|^\/oic\/sec.*$');
 
-        if (ignoreList.indexOf(path) === -1) {
+        if (!ignoreRe.test(path)) {
             DataService.addResource(event.resource);
         }
     }
